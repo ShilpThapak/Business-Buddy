@@ -29,7 +29,14 @@ class lead(models.Model):
     #leadactivity 
     #leadtasks
     def __str__(self):
-        return self.fullname
+        return self.name
+        
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.fullname,
+            "time": self.time.strftime("%b %d %Y, %I:%M %p"),
+        }
     
 class activity(models.Model):
     activitytype = models.CharField(max_length=25)
