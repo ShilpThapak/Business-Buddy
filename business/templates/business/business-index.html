@@ -1,0 +1,14 @@
+{% extends 'business/business-layout.html' %}
+
+{%block body%}
+  <div class="topnav">
+    <a class="active" href="{%url 'business-buddy'%}">Home</a>
+    <a href="{%url 'sales'%}">Sales Buddy</a>
+  </div>
+  
+ <div id="title" style="text-align: center; font-size: 25px; padding: 10px;"> Welcome to Business Buddy </div>
+ <div id="text" style="text-align: center;"> 
+    Go to "Sales Buddy" in the navigation bar above.
+ </div>
+
+{% endblock %}

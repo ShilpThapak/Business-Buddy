@@ -1,0 +1,19 @@
+#leadlist{
+    border: 1px solid rgb(223, 227, 235);
+    margin: 0px 40px 0px 40px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+#title{
+  padding: 5px;
+  font-size: 25px;
+  margin: 0px 40px 0px 40px;
+}
+
+.text{
+  padding: 5px;
+  font-size: 16px;
+  margin: 0px 40px 0px 40px;
+}

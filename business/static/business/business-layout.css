@@ -1,0 +1,52 @@
+#top-bar{
+    background-color: #33475b;
+    color: white;
+    padding: 8px;
+    font-family: "AvenirNext","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: auto auto;
+    border: 0.5px solid grey;
+  }
+  #top-bar a {
+    color:white;
+  }
+
+  #user-info{
+    text-align: right;
+  }
+  
+  #logo{
+    font-size: 16px;
+  }
+
+  #body{
+    
+    height: 100%;
+    font-family: "AvenirNext","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #2d3e50;
+    font-family: "AvenirNext","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .topnav a:hover {
+    background-color: #141c24;
+    color: white;
+  }
+  
+  .topnav a.active {
+    background-color: #ff7a59;
+    color: white;
+  }

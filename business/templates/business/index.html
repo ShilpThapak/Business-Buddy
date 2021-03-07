@@ -1,0 +1,79 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> TNL IT Solutions </title>
+        <link href="{% static 'business/index.css' %}" rel="stylesheet">
+        <script src="{% static 'business/index.js' %}"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div id="tnllogo">  TNL IT Solutions </div>
+        
+        
+        <div id="aboutussection">
+            <div id="abouttext">
+                
+                Started in 2021, TNL IT Solutions is a one-stop destination for all your IT needs. We can help you build scalable applications to grow your business. <br>
+                <br> We believe in progress—that the application of intelligence, reason and science can improve business, society and the human condition. Our services have the power to transform your organisation. <br>
+                <br> We use technologies like Python, Django, HTML, CSS, and JavaScript to build any kind of web applications. Our team members include: David Malan, Brian Yu and Shilp Thapak. <br>
+                <br> Learn more about our services below.
+
+            </div>
+        </div>
+
+        <div class="servicesection">
+            <div class="servicesdiv">
+                <h2> Our Services </h2>
+                We provide services like:
+                <ul>
+                <li> Website Development </li>
+                <li> App Development </li>
+                <li> Software Development </li>
+                <li> And more...</li>
+                </ul>
+            </div>
+
+            <div class="servicesdiv">
+                <form id="leadform">
+                    <h2> Interested in our Services? </h2>
+                    Fill the form and we'll get back to you. <br> <br>
+                    
+                    <div class="form-label">Full Name</div>
+                    <input type='text' id="leadname" class="form-control" required> <br>
+                    
+                    <div class="form-label">Email</div>
+                    <input type='Email'  id="leademail" required class="form-control"> <br>
+                    
+                    <div class="form-label">Phone Number</div>
+                    <input type='tel' id='leadnumber' required class="form-control"> <br>
+                    
+                    <div class="form-label">What are you looking for? </div>
+                    
+                    <select id="leadinterest" class="form-control">
+                        <option value="Web Development Services">Website Development</option>
+                        <option value="App Development Services">Android/iOS App Development</option>
+                        <option value="App Development Services">Software Development</option>
+                        <option value="App Development Services">Other Products/Services</option>
+                    </select> <br>
+
+                    <input type='submit' class="btn btn-primary">
+                </form>
+                <div id='blankdiv'>
+                </div>
+                <div id='messagediv'>
+                    Form Submitted!
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="footer">
+        </div>
+
+
+    </body>
+</html>

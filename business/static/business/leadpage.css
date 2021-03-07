@@ -1,0 +1,196 @@
+#leadfullpage{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    height: max-content;
+}
+
+@media (max-width:750px){
+    #leadfullpage{
+        display: block;
+    }
+}
+
+.leadcolumn{
+    /* border: 1px solid rgb(223, 227, 235); */
+    padding: 15px;
+    height: auto;
+}
+
+#leadactivities{
+    background-color: rgb(223, 227, 235) ;
+}
+
+#assignedto a{
+    display: none;
+}
+
+#assignedto:hover a{
+    display: inline;
+    border-bottom: 0.5px solid grey;
+}
+
+#edit-status-div{
+    display: none;
+}
+
+#lead-status-div a{
+    display: none;
+}
+
+#lead-status-div:hover a{
+    display: inline;
+    border-bottom: 0.5px solid grey;
+}
+
+#allactivitydiv, #alltaskdiv{ 
+    /* height: 500px;  */
+    /* overflow-y: auto; */
+}
+
+#activitydiv, #taskdiv {
+    background-color: white;
+    margin: 10px 0px 10px 0px;
+    padding: 15px 35px 15px 15px;
+    box-shadow: rgb(45 62 80 / 12%) 0px 1px 5px 0px;
+}
+
+#addtask, #addactivity{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+#activityheader{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid grey;
+}
+
+#leadinfoheader{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid grey;
+}
+
+#activitydivhead{
+    display:flex;
+    justify-content: space-between;
+}
+
+#activityauthor{
+    font-size: small;
+    border-bottom: 0.5px solid grey;
+}
+#activitytext{
+    font-size: medium;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+#selectactivity{
+    width: 100%;
+    padding: 4px;
+}
+
+.text{
+    width: 100%;
+    margin-top: 4px
+}
+
+.datetimefield{
+    width: 100%;
+}
+
+#taskscol{
+    background-color: rgb(223, 227, 235) ;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    width: 600px;
+    max-width: 80%;
+    height: 750px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+#taskscol.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.task-header{
+    display: flex;
+    padding: 10px 15px;
+    justify-content: space-between;
+    border-bottom: 0.5px solid grey;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close-button{
+    border: none;
+    background: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+}
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+
+}
+
+#taskdivheader, #taskdivcontent{
+    display: flex;
+    justify-content: space-between;
+}
+
+#addactivitybtn, #addtaskbtn{
+    margin-top: 4px;
+    width: 100%;
+    margin: 5px 0px 5px 0px;
+    padding: 4px;
+    color: white;
+    background-color: #ff7a59;
+    outline: none;
+    border: none;
+    font-weight: 500;
+}
+
+#tasksbtn{
+    margin: 5px 0px 5px 0px;
+    padding: 4px;
+    font-weight: 500;
+}
+
+#addactivitytext{
+    font-size: medium;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.label{
+    user-select: none;
+    color: #516f90;
+    font-weight: 400;
+    font-size: 12px;
+}

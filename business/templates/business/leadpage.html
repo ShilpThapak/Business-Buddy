@@ -1,0 +1,158 @@
+{% extends 'business/business-layout.html' %}
+{% load static%}
+
+{%block head%}
+<link href="{% static 'business/leadpage.css' %}" rel="stylesheet">
+<script src="{% static 'business/leadpage.js' %}"></script>
+{%endblock%}
+
+{%block body%}
+  <div class="topnav">
+    <a href="{%url 'business-buddy'%}">Home</a>
+    <a class="active" href="{%url 'sales'%}">Sales Buddy</a>
+    
+  </div>
+
+    
+    <div id="leadfullpage">
+        <div class="leadcolumn" id="leadinfo">
+            <div id='leadinfoheader'><h2> Lead Info </h2></div>
+            <div style="display: none;" id="leadid">{{lead.id}}</div>
+            
+            <div class='label'>Name: </div> 
+            <div>{{lead.fullname}}</div>
+            <div class='label'>Email: </div>
+            <div> {{lead.email}}</div>
+            <div class='label'>Contact number: </div>
+            <div>{{lead.number}}</div>
+            <div class='label'>Interests: </div>
+            <div>{{lead.interest}}</div>
+            
+            
+            
+            <div class='label'>Lead Status: </div>
+            <div id="lead-status-div">{{lead.status}} &emsp; <a href="" id="status-edit-link">Edit</a></div>
+            
+            
+            <div id="edit-status-div">
+                <form id='statusform'>
+                <select form='statusform' id='status-select-option'>
+                    <option value="New">New</option>
+                    <option value="In-progress">In-progress</option>
+                    <option value="Closed">Closed</option>  
+                </select>
+                <input type="submit">
+                </form>
+            </div>
+
+            <div class='label'>Create on: </div>
+            <div>{{lead.timecreated}}</div>
+
+            
+            {%if user.role.id == 2 or user.is_superuser%}
+            <div id="permission" style="display: none">1</div>
+            {%else%}
+            <div id="permission" style="display: none">0</div>
+            {%endif%}
+
+            {%if user.role.id == 2 or user.is_superuser%}
+            ---
+            <div class='label'>Assigned to: </div>
+            <div id = "assignedto">{{lead.assignedto}} &emsp; <a href="" id="editlink">Edit</a></div> 
+            {%endif%}
+
+            <div id="reassigndiv">
+                <form id='assignform'>
+                <select form='assignform' id='selectoption'>
+                    {%for associate in associates%}
+                        <option value={{associate.id}}>{{associate}}</option>
+                    {%endfor%}
+                </select>
+                <input type="submit">
+                </form>
+            </div>
+            
+        </div>
+        
+
+        <div class="leadcolumn" id="leadactivities">
+            <div id="activityheader">
+                <h2> Activity Log</h2>
+                <button id="tasksbtn" data-model-target='#taskscol'> Your Tasks </button>
+            </div>
+
+            <div id="addactivity">
+                <form action="{%url 'addactivity'%}" method="POST">
+                {%csrf_token%}
+                <select name="activitytype" id='selectactivity'>
+                    <option> Call Log  </option>
+                    <option> Email  </option>
+                    <option> Note  </option>
+                    <option> Minutes of Meeting </option>
+                </select>
+                <input type='text'name="text" class="text" required id="addactivitytext">
+                <input type="submit" value="Add Activity" id="addactivitybtn">
+                <input type="hidden" value="{{lead.id}}" name="leadid">
+                <input type="hidden" value="{{user.id}}" name="userid">
+                </form>
+            </div>
+
+            <div id="allactivitydiv">
+                {%for activity in activities%}
+                <div id='activitydiv'>
+                    <div id='activitydivhead'>
+                        <div style="color: #516f90;"> {{activity.activitytype}} </div>
+                        <div class="label"> {{activity.time}} </div>
+                    </div>
+                    <div id="activityauthor" class="label"> by {{activity.author}} </div>
+                    <div id="activitytext">{{activity.text}} </div>
+                </div>
+                {%endfor%}
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div id="taskscol">
+
+        <div class="task-header">
+            <div class="title">Your Tasks</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+
+        <div id="addtask">
+            <form action="{%url 'addtask'%}" method='POST'>
+                {%csrf_token%}
+                <input type="datetime-local" name='time' class="datetimefield" required>
+                <input type='text' name='tasktext' class="text" required id="addtasktext">
+                <input type="hidden" value="{{lead.id}}" name="leadid">
+                <input type="hidden" value="{{user.id}}" name="userid">
+                <input type="submit" value="Add Task" id="addtaskbtn">
+            </form>
+        </div>
+
+        <div id="alltasksdiv">
+            {%for task in tasks%}
+            {%if task.author.id == user.id%}
+            <div id='taskdiv'>
+                <input type="hidden" value="{{task.id}}" name="taskid">
+                <div id="taskdivheader">
+                    <div>{{task.text}}</div>
+                    <div class="label">{{task.time}}</div>
+                </div>
+                <div id='taskdivcontent'>
+                    <div class="label">Associated with: <a href="{%url 'leadpage' task.oflead.id%}">{{task.oflead}}</a></div>
+                    <div> <button id="donebtn"> Done </button> </div>
+                </div>
+            </div>
+            {%endif%}
+            {%empty%}
+            No tasks
+            {%endfor%}
+        </div>
+
+    </div>
+    <div id='overlay'>
+    </div>    
+{% endblock %}

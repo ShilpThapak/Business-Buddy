@@ -1,0 +1,64 @@
+{% extends 'business/business-layout.html' %}
+{% load static%}
+
+{%block head%}
+<link href="{% static 'business/sales.css' %}" rel="stylesheet">
+{%endblock%}
+
+{%block body%}
+  <div class="topnav">
+    <a href="{%url 'business-buddy'%}">Home</a>
+    <a class="active" href="{%url 'sales'%}">Sales Buddy</a>
+  </div>
+
+  <div id="title"> Leads </div>
+
+    
+    
+  {%if user.role.id == 2 or user.is_superuser%}
+
+    <div id="leadlist" style="background-color: rgb(229, 245, 248)"> 
+      <div id="leaditem"><b>Full Name</b> </div>
+      <div id="leaditem"><b>Stage </b></div>
+      <div id="leaditem"><b>Assigned to </b></div>
+      <div id="leaditem"><b>Interests </b></div>
+    </div>
+
+    {%for lead in leads%}
+    <div id="leadlist">
+        <div id="leaditem"><a href="{% url 'leadpage' lead.id%}">{{lead.fullname}}</a></div>
+        <div id="leaditem">{{lead.status}}</div>
+        <div id="leaditem">{{lead.assignedto}}</div>
+        <div id="leaditem">{{lead.interest}}</div>
+    </div>
+    {%endfor%}
+
+
+  {%elif user.role.id == 1%}
+
+    <div id="leadlist" style="background-color: rgb(229, 245, 248)"> 
+      <div id="leaditem"><b>Full Name</b> </div>
+      <div id="leaditem"><b>Stage </b></div>
+      <div id="leaditem"><b>Assigned to </b></div>
+      <div id="leaditem"><b>Interests </b></div>
+    </div>
+
+    {%for lead in leads%}
+      {%if lead in user.leadsassigned.all%}
+        <div id="leadlist">
+            <div id="leaditem"><a href="{% url 'leadpage' lead.id%}">{{lead.fullname}}</a></div>
+            <div id="leaditem">{{lead.status}}</div>
+            <div id="leaditem">{{lead.assignedto}}</div>
+            <div id="leaditem">{{lead.interest}}</div>
+        </div>
+      {%endif%}
+
+    {%empty%}
+      <div class="text"> No leads assigned to you. Please contact your sales manager. </div>
+    {%endfor%}
+  
+  {%else%}
+    <div class="text">You are not in sales. So you don't have access to this page. </div>
+  {%endif%}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+#tnllogo{
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+}
+
+#aboutussection{
+    border: 1px solid black;
+    height: 750px;
+    background-image: url(https://i.pinimg.com/originals/ff/38/95/ff389589e67020535cb89089716153fe.jpg);
+    padding: 10%;
+    align-content: center;
+}
+
+#abouttext{
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10%;
+    font-size: large;
+}
+
+#blankdiv{
+    height: 20px;
+}
+
+#messagediv{ 
+    height: 20px;
+    display: none;
+}
+
+
+
+.servicesection{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+  
+}
+
+@media(max-width:750px){
+    .servicesection{
+        display: block;
+    }
+}
+
+
+.servicesdiv{
+    border: 1px solid black;
+    padding: 50px;
+}
+
+
+#footer{
+    height: 50px;
+    background-image: url(https://i.pinimg.com/originals/ff/38/95/ff389589e67020535cb89089716153fe.jpg);
+}
+
