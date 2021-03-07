@@ -29,7 +29,7 @@ class lead(models.Model):
     #leadactivity 
     #leadtasks
     def __str__(self):
-        return self.name
+        return self.fullname
     
 class activity(models.Model):
     activitytype = models.CharField(max_length=25)
