@@ -104,3 +104,7 @@ Features
     visible on all screen sizes.
 
 Thank you for reading!
+
+Watch the demo here:
+
+[![Business Buddy - A CS50 Web Project](http://img.youtube.com/vi/jyBJyWJyeVg/0.jpg)](http://www.youtube.com/watch?v=jyBJyWJyeVg "Business Buddy - A CS50 Web Project")
