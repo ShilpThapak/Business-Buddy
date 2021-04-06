@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import User, role, lead, activity, task
+from django.shortcuts import redirect
 
 
 def index(request):
@@ -79,7 +80,8 @@ def addactivity(request):
     print(userid, leadid, text, activitytype)
     newactivity = activity(activitytype=activitytype, text=text, oflead=oflead, author=author)
     newactivity.save()
-    return HttpResponseRedirect(reverse("leadpage", args=leadid))
+    print(leadid)
+    return redirect("leadpage", leadid = leadid)
 
 def addtask(request):
     userid = request.POST["userid"]
@@ -90,7 +92,7 @@ def addtask(request):
     time = request.POST["time"]
     newtask = task(text=text, time=time, oflead=oflead, author=author)
     newtask.save()
-    return HttpResponseRedirect(reverse("leadpage", args=leadid))
+    return redirect("leadpage", leadid = leadid)
 
 @csrf_exempt
 def taskdone(request):
@@ -99,7 +101,7 @@ def taskdone(request):
         print(taskid)
         taskdone = task.objects.get(pk=taskid)
         taskdone.delete()
-        return HttpResponse(status=204)
+        return HttpResponse(status = 204)
 
 def logout_view(request):
     logout(request)
